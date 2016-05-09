@@ -1,6 +1,6 @@
 # PhoenixReactor
 
-Library which main aim is to provide an easy way to use React with Phoenix framework.
+Library which main aim is to provide an easy way to use [React](https://facebook.github.io/react/) with [Phoenix](http://www.phoenixframework.org/) framework.
 
 ## Installation
 
