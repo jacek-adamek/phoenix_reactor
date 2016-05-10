@@ -49,7 +49,7 @@ defmodule Mix.Tasks.PhoenixReactor.Install do
     Enum.join(["npm install"] ++ @webpack_packages ++ ["--save-dev"], " ") |> cmd
 
     maybe_copy Path.join(@priv_source_dir, "webpack.config.js"), "./webpack.config.js"
-    maybe_copy Path.join(@priv_source_dir, ".babelrc"), "./.babelrc"
+    maybe_copy Path.join(@priv_source_dir, "babelrc"), "./.babelrc"
     maybe_move "./priv/static/js/phoenix.js", Path.join(@web_js_directory, "phoenix.js")
 
     IO.puts "\nRemember to add following to ./config/dev.exs\n
