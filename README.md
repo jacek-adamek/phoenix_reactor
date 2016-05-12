@@ -4,12 +4,10 @@ Library which main aim is to provide an easy way to use [React](https://facebook
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
 1. Add phoenix_reactor to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:phoenix_reactor, "~> 0.0.1"}]
+          [{:phoenix_reactor, "~> 0.0.2"}]
         end
 
 2. Get dependency:
@@ -19,6 +17,10 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 3. Compile your phoenix project:
 
         mix compile
+
+BTW: It is assumed that you have created your phoenix project with `--no-brunch` option i.e.
+
+        mix phoenix.new --no-brunch hello_phoenix
 
 ## Tasks
 
@@ -40,6 +42,12 @@ and call npm to install dependencies.
 If you want to skip babel and webpack installation run above task with `--no-webpack` option:
 
         mix phoenix_reactor.install --no-webpack
+
+After installation, remember to add following watcher definition:
+
+        watchers: [node: ["node_modules/webpack/bin/webpack.js", "--watch", "--color"]]
+
+to your `./config/dev.exs` file
 
 ## Usage
 
