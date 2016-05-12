@@ -10,7 +10,22 @@ defmodule PhoenixReactor do
   @data_react_props "react-props"
 
   @doc """
-  Renders react component container.
+  Renders react component container. It can be called in a phoenix template or directly in a phoenix
+  view.
+
+  ## Using in a template filex
+
+      ...
+      <div>
+        <%= PhoenixReactor.react_container("home", %{message: @message}) %>
+      <div>
+      ...
+
+  ## Using in a view file
+
+      def render("show.html", assigns) do
+        PhoenixReactor.react_container("home", assigns[:props])
+      end
 
   ## Examples:
       iex> PhoenixReactor.react_container("home")
