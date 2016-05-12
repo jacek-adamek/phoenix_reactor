@@ -1,5 +1,9 @@
 defmodule PhoenixReactor do
 
+  @moduledoc """
+  Module contains a function which helps to render react component.
+  """
+
   import Phoenix.HTML.Tag, only: [content_tag: 3]
 
   @data_react_component "react-component"
