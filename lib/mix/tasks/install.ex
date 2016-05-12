@@ -1,7 +1,27 @@
 defmodule Mix.Tasks.PhoenixReactor.Install do
   use Mix.Task
 
-  @shortdoc "Install"
+  @shortdoc "Install react, babel and webpack"
+
+  @moduledoc """
+  Installs react, babel and webpack.
+
+  ## Example
+
+      mix phoenix_reactor.install
+  ## Command line options
+
+    * `--no-webpack` - omit installing babel and webpack
+
+  During installation few files are generated (unless they already exist).
+  ## Example of generated files:
+
+      ./.babelrc
+      ./packages.json
+      ./webpack.config.js
+      ./web/static/js/app.js
+      ./web/static/js/phoenix_reactor.js
+  """
 
   def run(opts) do
     init_npm
