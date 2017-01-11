@@ -28,20 +28,14 @@ defmodule PhoenixReactor do
       end
 
   ## Examples:
-      iex> PhoenixReactor.react_container("home")
-      {:safe, ["<div data-react-component=\\"home\\" data-react-props=\\"{}\\">", "", "</div>"]}
+      iex> PhoenixReactor.react_container("home") |> Phoenix.HTML.safe_to_string()
+      "<div data-react-component=\\"home\\" data-react-props=\\"{}\\"></div>"
 
-      iex> PhoenixReactor.react_container("home", %{your_message: "Hello World"})
-      {:safe,
-        ["<div data-react-component=\\"home\\" data-react-props=\\"{&quot;yourMessage&quot;:&quot;Hello World&quot;}\\">",
-        "",
-        "</div>"]}
+      iex> PhoenixReactor.react_container("home", %{your_message: "Hello World"}) |> Phoenix.HTML.safe_to_string()
+      "<div data-react-component=\\"home\\" data-react-props=\\"{&quot;yourMessage&quot;:&quot;Hello World&quot;}\\"></div>"
 
-      iex> PhoenixReactor.react_container("home", %{your_message: "Hello World"}, class: "container", id: "home")
-      {:safe,
-        ["<div class=\\"container\\" data-react-component=\\"home\\" data-react-props=\\"{&quot;yourMessage&quot;:&quot;Hello World&quot;}\\" id=\\"home\\">",
-        "",
-        "</div>"]}
+      iex> PhoenixReactor.react_container("home", %{your_message: "Hello World"}, class: "container", id: "home") |> Phoenix.HTML.safe_to_string()
+      "<div class=\\"container\\" data-react-component=\\"home\\" data-react-props=\\"{&quot;yourMessage&quot;:&quot;Hello World&quot;}\\" id=\\"home\\"></div>"
   """
   @spec react_container(String.t | atom, map, Keyword.t) :: {:safe, list} | {:error, any}
   def react_container(name, props \\ %{}, html_attrs \\ [])
