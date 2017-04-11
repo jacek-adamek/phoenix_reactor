@@ -7,7 +7,7 @@ Library which main aim is to provide an easy way to use [React](https://facebook
 1. Add phoenix_reactor to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:phoenix_reactor, "~> 0.0.3"}]
+          [{:phoenix_reactor, "~> 0.1.0"}]
         end
 
 2. Get dependency:
