@@ -24,9 +24,9 @@ defmodule Mix.Tasks.PhoenixReactor.Install do
   """
 
   def run(opts) do
-    init_npm
-    install_react
-    unless Enum.member?(opts, "--no-webpack"), do: install_webpack
+    init_npm()
+    install_react()
+    unless Enum.member?(opts, "--no-webpack"), do: install_webpack()
   end
 
   @priv_source_dir "./_build/dev/lib/phoenix_reactor/priv"
