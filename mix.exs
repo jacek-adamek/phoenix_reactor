@@ -27,6 +27,7 @@ defmodule PhoenixReactor.Mixfile do
 
   defp package do
     [contributors: ["Jacek Adamek"],
+    maintainers: ["Jacek Adamek"],
     licenses: ["MIT"],
     links: %{ "Github" => "https://github.com/jacek-adamek/phoenix_reactor" }]
   end
