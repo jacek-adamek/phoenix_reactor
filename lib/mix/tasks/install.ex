@@ -49,10 +49,10 @@ defmodule Mix.Tasks.PhoenixReactor.Install do
 
     File.mkdir_p! @web_js_directory
 
-    maybe_copy Path.join(@priv_source_dir, "phoenix_reactor.js"),
+    copy_if_not_exists Path.join(@priv_source_dir, "phoenix_reactor.js"),
       Path.join(@web_js_directory, "phoenix_reactor.js")
 
-    maybe_copy Path.join(@priv_source_dir, "app.js"),
+    copy_if_not_exists Path.join(@priv_source_dir, "app.js"),
       Path.join(@web_js_directory, "app.js")
   end
 
@@ -68,9 +68,9 @@ defmodule Mix.Tasks.PhoenixReactor.Install do
   defp install_webpack do
     Enum.join(["npm install"] ++ @webpack_packages ++ ["--save-dev"], " ") |> cmd
 
-    maybe_copy Path.join(@priv_source_dir, "webpack.config.js"), "./webpack.config.js"
-    maybe_copy Path.join(@priv_source_dir, "babelrc"), "./.babelrc"
-    maybe_move "./priv/static/js/phoenix.js", Path.join(@web_js_directory, "phoenix.js")
+    copy_if_not_exists Path.join(@priv_source_dir, "webpack.config.js"), "./webpack.config.js"
+    copy_if_not_exists Path.join(@priv_source_dir, "babelrc"), "./.babelrc"
+    move_if_not_exists "./priv/static/js/phoenix.js", Path.join(@web_js_directory, "phoenix.js")
 
     IO.puts "\nRemember to add following to ./config/dev.exs\n
       watchers: [node: [\"node_modules/webpack/bin/webpack.js\", \"--watch\", \"--color\"]]"
@@ -81,7 +81,7 @@ defmodule Mix.Tasks.PhoenixReactor.Install do
     Mix.shell.cmd(cmd)
   end
 
-  defp maybe_copy(source, destination) do
+  defp copy_if_not_exists(source, destination) do
     unless File.exists? destination do
       Mix.shell.info [:green, "* creating ", :reset, destination]
       File.cp! source, destination
@@ -90,7 +90,7 @@ defmodule Mix.Tasks.PhoenixReactor.Install do
     end
   end
 
-  defp maybe_move(source, destination) do
+  defp move_if_not_exists(source, destination) do
     if File.exists?(source) && !File.exists?(destination) do
       Mix.shell.info [:green, "* moving ", :reset, source, " to ", destination]
       File.cp! source, destination
